@@ -1,8 +1,0 @@
-[
-  {
-    "repository":  "BlissRoms-Vendor/proprietary_vendor_huawei_kirin970-common",
-    "target_path": "vendor/huawei/kirin970-common",
-    "revision":    "p9.0",
-    "remote":      "github"
-  }
-]
