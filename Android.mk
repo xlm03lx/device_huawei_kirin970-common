@@ -1,3 +1,4 @@
+
 #
 # Copyright (C) 2018 The LineageOS Project
 #
@@ -13,9 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 LOCAL_PATH := $(call my-dir)
-
-ifneq ($(filter ravel,$(TARGET_DEVICE)),)
+ifneq ($(filter ravel charlotte,$(TARGET_DEVICE)),)
 include $(call all-makefiles-under,$(LOCAL_PATH))
 endif
+
