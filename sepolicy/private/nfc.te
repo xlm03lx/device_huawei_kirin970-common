@@ -1,3 +1,0 @@
-#allow hal_nfc_default sysfs:file read;
-allow nfc system_data_file:dir write;
-allow nfc device:file read;

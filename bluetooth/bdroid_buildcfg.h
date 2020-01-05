@@ -12,12 +12,7 @@ typedef struct {
 } device_t;
 
 static const device_t devices[] = {
-    {"HWALP", "Mate 10"},
-    {"HWBKL", "Honor View 10"},
-    {"HWBLA", "Mate 10 Pro"},
-    {"HWCLT", "P20 Pro"},
-    {"HWCOL", "Honor 10"},
-    {"HWEML", "P20"},
+    {"HWPRA", "HUAWEI P8 Lite 2017"},
 };
 
 static inline const char *BtmGetDefaultName()
@@ -34,16 +29,14 @@ static inline const char *BtmGetDefaultName()
     }
 
     // Fallback to ro.product.model
-    return "";
+    return "HUAWEI P8 Lite 2017";
 }
 
 #define BTM_DEF_LOCAL_NAME BtmGetDefaultName()
 #define BTM_BYPASS_EXTRA_ACL_SETUP TRUE
 
-#define BTM_WBS_INCLUDED TRUE
-#define BTIF_HF_WBS_PREFERRED TRUE
+#define BLE_INCLUDED TRUE
 #define BLE_VND_INCLUDED TRUE
-#undef PROPERTY_VALUE_MAX
 
 #undef PROPERTY_VALUE_MAX
 
