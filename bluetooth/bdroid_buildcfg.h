@@ -16,6 +16,7 @@ static const device_t devices[] = {
     {"HWBKL", "Honor View 10"},
     {"HWBLA", "Mate 10 Pro"},
     {"HWCLT", "P20 Pro"},
+    {"HWRVL", "Honor Note 10"},
     {"HWCOL", "Honor 10"},
     {"HWEML", "P20"},
 };

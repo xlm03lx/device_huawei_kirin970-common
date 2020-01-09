@@ -26,3 +26,9 @@ debug.force_no_blanking=true
 
 # RIL
 ro.skip.fingerprint.check=true
+
+# Camera
+persist.sys.camera.huawei=true
+
+# Security Patches
+ro.build.version.security_patch_sys=2019-09-05

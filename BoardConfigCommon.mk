@@ -39,8 +39,12 @@ BOARD_AVB_ENABLE := false
 
 
 # LineageOS Hardware
-BOARD_HARDWARE_CLASS += \
-    $(DEVICE_PATH)/lineagehw
+#BOARD_HARDWARE_CLASS += \
+#    $(DEVICE_PATH)/lineagehw
+
+# Lineage hardware
+JAVA_SOURCE_OVERLAYS := \
+    org.lineageos.hardware|$(VENDOR_PATH)/lineagehw|**/*.java
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(VENDOR_PATH)/bluetooth
