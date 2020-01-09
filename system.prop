@@ -19,7 +19,7 @@ ro.telephony.ril.hisi=true
 ro.statsd.enable=false
 
 # Disable HW Overlays
-debug.sf.disable_hwcomposer=true
+#debug.sf.disable_hwcomposer=true
 
 # Force disable blank
 debug.force_no_blanking=true
@@ -32,3 +32,26 @@ persist.sys.camera.huawei=true
 
 # Security Patches
 ro.build.version.security_patch_sys=2019-09-05
+
+# MediaCodec
+persist.sys.google_avc_enc=0 
+persist.sys.sr_google_avc_enc=1 
+persist.debug.wfd.enable=0 
+
+# Gpu
+debug.egl.hw=1 
+debug.egl.profiler=1 
+debug.hwui.use_buffer_age=false 
+debug.performance.tuning=1 
+debug.sf.hw=1 
+hwui.disable_vsync=true 
+ro.config.enable.hw_accel=true 
+video.accelerate.hw=1
+
+# Statsd
+ro.statsd.enable=false
+
+# Sdcard
+ro.statsd.enable=false
+ro.sys.sdcardfs=1
+persist.sys.adoptable_fbe=true
