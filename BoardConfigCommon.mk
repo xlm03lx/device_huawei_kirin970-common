@@ -76,6 +76,9 @@ TARGET_SYSTEM_PROP := $(VENDOR_PATH)/system.prop
 #BOARD_PROVIDES_BOOTLOADER_MESSAGE := true
 TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/rootdir/etc/fstab.kirin970
 
+# EMUI8 ecurity patch level
+VENDOR_SECURITY_PATCH := 2019-08-01
+
 # Release tools
 TARGET_RELEASETOOLS_EXTENSIONS := $(VENDOR_PATH)/releasetools
 
