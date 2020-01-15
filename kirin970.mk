@@ -16,9 +16,16 @@
 
 $(call inherit-product-if-exists, vendor/huawei/kirin970-common/kirin970-common-vendor.mk)
 
-# Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-    $(LOCAL_PATH)/overlay
+# APN configs
+ifneq ($(TARGET_AOSP_BASED),)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/etc/apns-conf.xml:system/etc/apns-conf.xml
+endif
+
+# Android Open Source Project Common Stuff
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -47,7 +54,7 @@ PRODUCT_PACKAGES += \
 # Input
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/fingerprint.kl:system/usr/keylayout/fingerprint.kl
-	
+
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
@@ -58,6 +65,15 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras \
     nfc_nci.pn54x.default
+
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay
+
+ifeq ($(TARGET_AOSP_BASED),)
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay-lineage
+endif
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -77,11 +93,13 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.vendor.override.build_display=$(BUILD_ID)
 
 # Radio
+ifeq ($(TARGET_AOSP_BASED),)
 PRODUCT_PACKAGES += \
     qti-telephony-common
 
 PRODUCT_BOOT_JARS += \
     telephony-ext
+endif
 
 # Offline charging
 PRODUCT_PACKAGES += \
