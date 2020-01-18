@@ -34,7 +34,8 @@ PRODUCT_PACKAGES += \
     init.hisi.rc \
     init.kirin970.rc \
     init.kirin970.ab.rc \
-    init.kirin970.environ.rc
+    init.kirin970.environ.rc \
+    init.aptouch.rc
 
 # Display
 PRODUCT_PACKAGES += \
