@@ -322,7 +322,6 @@ lib64/libvixl-arm64.so:lib64/vndk-26/libvixl-arm64.so
 lib64/libvixl-arm.so:lib64/vndk-26/libvixl-arm.so
 lib64/libvorbisidec.so:lib64/vndk-26/libvorbisidec.so
 lib64/libwifi-service.so:lib64/vndk-26/libwifi-service.so
-lib64/libwifi-system.so:lib64/vndk-26/libwifi-system.so
 lib64/libxml2.so:lib64/vndk-26/libxml2.so
 lib64/libyuv.so:lib64/vndk-26/libyuv.so
 lib64/libziparchive.so:lib64/vndk-26/libziparchive.so
@@ -388,6 +387,3 @@ lib64/vndk-27/libeffectsconfig.so
 lib64/vndk-27/libicui18n.so
 lib64/vndk-27/libicuuc.so
 lib64/vndk-27/libneuralnetworks.so
-
-# Wifi
-lib64/libwifi-system.so|7b990ee6f1aeb4d9446231b15fedcf7db277f88c
