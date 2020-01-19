@@ -115,7 +115,9 @@ PRODUCT_COPY_FILES += \
 
 # Selinux
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/sepolicy/27.0.cil:$(TARGET_COPY_OUT_SYSTEM)/etc/selinux/mapping/27.0.cil
+    $(LOCAL_PATH)/sepolicy/26.0.cil:$(TARGET_COPY_OUT_SYSTEM)/etc/selinux/mapping/26.0.cil \
+    $(LOCAL_PATH)/sepolicy/27.0.cil:$(TARGET_COPY_OUT_SYSTEM)/etc/selinux/mapping/27.0.cil \
+    $(LOCAL_PATH)/sepolicy/28.0.cil:$(TARGET_COPY_OUT_SYSTEM)/etc/selinux/mapping/28.0.cil
 
 # Shims
 PRODUCT_PACKAGES += \
