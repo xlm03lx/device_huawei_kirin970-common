@@ -3,6 +3,37 @@ audio.deep_buffer.media=true
 ro.config.media_vol_steps=25
 ro.config.vc_call_vol_steps=7
 
+# ART
+dalvik.vm.dex2oat-filter=speed
+dalvik.vm.image-dex2oat-filter=speed
+ro.vendor.qti.am.reschedule_service=true
+ro.sys.fw.dex2oat_thread_count=8
+dalvik.vm.boot-dex2oat-threads=8
+dalvik.vm.dex2oat-threads=8
+
+# Fling
+ro.min.fling_velocity=160
+ro.max.fling_velocity=20000
+
+# GPU
+debug.composition.type=c2d
+debug.mdpcomp.idletime=600
+persist.hwc.mdpcomp.enable=true
+persist.hwc.ptor.enable=true
+debug.enable.sglscale=1
+debug.sf.hw=1
+debug.hwui.renderer=opengl
+debug.egl.hw=1
+debug.sf.disable_hwc=0
+debug.sf.recomputecrop=0
+debug.sf.disable_backpressure=1
+debug.sf.latch_unsignaled=1
+persist.hwc.mdpcomp.enable=true
+persist.hwc.ptor.enable=true
+debug.sf.gpu_comp_tiling=1
+debug.performance.tuning=1
+video.accelerate.hw=1
+
 # MTP
 persist.sys.usb.config=mtp,adb
 
@@ -37,16 +68,6 @@ ro.build.version.security_patch_sys=2019-09-05
 persist.sys.google_avc_enc=0 
 persist.sys.sr_google_avc_enc=1 
 persist.debug.wfd.enable=0 
-
-# Gpu
-debug.egl.hw=1 
-debug.egl.profiler=1 
-debug.hwui.use_buffer_age=false 
-debug.performance.tuning=1 
-debug.sf.hw=1 
-hwui.disable_vsync=true 
-ro.config.enable.hw_accel=true 
-video.accelerate.hw=1
 
 # Statsd
 ro.statsd.enable=false
