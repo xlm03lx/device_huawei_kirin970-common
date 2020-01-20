@@ -14,22 +14,25 @@
 # limitations under the License.
 #
 
-#include build/make/target/board/generic_arm64_a/BoardConfig.mk
-
 VENDOR_PATH := device/huawei/kirin970-common
 
-# Platform
+# Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := generic
+TARGET_CPU_VARIANT := cortex-a53
 
 TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv7-a-neon
+TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a15
+TARGET_2ND_CPU_VARIANT := cortex-a53
+
+TARGET_USES_64_BIT_BINDER := true
+
+# Bootloader
+TARGET_NO_BOOTLOADER := true
 
 # Kernel
 BOARD_KERNEL_IMAGE_NAME := Image
@@ -37,6 +40,8 @@ TARGET_NO_KERNEL := false
 TARGET_PREBUILT_KERNEL := /dev/null
 BOARD_AVB_ENABLE := false
 
+# Audio
+USE_XML_AUDIO_POLICY_CONF := 1
 
 # LineageOS Hardware
 #BOARD_HARDWARE_CLASS += \
@@ -60,7 +65,7 @@ TARGET_EXFAT_DRIVER := exfat
 TARGET_RRO_OUT_SYSTEM := true
 
 # Display
-TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x2080000U
+TARGET_USES_HWC2 := true
 
 # Partitions
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3707764736
@@ -81,19 +86,16 @@ VENDOR_SECURITY_PATCH := 2019-08-01
 # Release tools
 TARGET_RELEASETOOLS_EXTENSIONS := $(VENDOR_PATH)/releasetools
 
+# Root
+BOARD_ROOT_EXTRA_FOLDERS := \
+    cust \
+    hw_odm \
+    modem_log \
+    preload \
+    sec_storage \
+    splash2 \
+    version
+
 # SELinux
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(VENDOR_PATH)/sepolicy/private
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(VENDOR_PATH)/sepolicy/public
-
-# Shims
-TARGET_LD_SHIM_LIBS := \
-    /system/lib64/libdisplayenginesvc_1_0.so|libshims_hwsmartdisplay_jni.so \
-    /system/lib64/libdisplayenginesvc_1_1.so|libshims_hwsmartdisplay_jni.so \
-    /system/lib64/libhwsmartdisplay_jni.so|libshims_hwsmartdisplay_jni.so \
-    /vendor/bin/hw/vendor.huawei.hardware.hisupl@1.0-service|libshims_hisupl.so
-
-# LLVN
-TARGET_USE_SDCLANG := true
-
-# vintf
-DEVICE_FRAMEWORK_MANIFEST_FILE := $(VENDOR_PATH)/framework_manifest.xml
