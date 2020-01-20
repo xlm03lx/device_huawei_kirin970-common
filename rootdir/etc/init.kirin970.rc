@@ -1,43 +1,49 @@
-import /system/etc/init/connectivity/init.${ro.connectivity.chiptype}.rc
+import init.${ro.hardware}.usb.rc
+import init.${ro.hardware}.power.rc
 
 on init
-    mount none /system/bin/adbd /sbin/adbd bind
-    mount none /system/etc/xml/power_profile.xml /product/etc/xml/power_profile.xml bind
-    mount none /system/etc/media_codecs.xml /vendor/etc/media_codecs.xml bind
-    mount none /system/etc/usb_audio_policy_configuration.xml /vendor/etc/usb_audio_policy_configuration.xml bind
-    mount none /system/usr/keylayout/fingerprint.kl /vendor/usr/keylayout/fingerprint.kl bind
+    mount debugfs /sys/kernel/debug /sys/kernel/debug mode=755
+
+    write /sys/kernel/mm/transparent_hugepage/enabled "never"
+
+    start watchdogd
+
+on fs
+    mount_all /vendor/etc/fstab.${ro.hardware}
+    setprop ro.crypto.fuse_sdcard false
+
+on post-fs
+
+    chmod 0666 /dev/ion
+    chmod 0666 /dev/graphics/fb0
 
 on post-fs-data
-    mkdir /data/vendor_ce 0771 root root
-    mkdir /data/vendor_de 0771 root root
-    mkdir /data/vendor/wifi 0770 wifi wifi
-    mkdir /data/vendor/wifi/hostapd 0770 wifi wifi
-    mkdir /data/vendor/wifi/hostapd/sockets 0770 wifi wifi
+    mkdir /data/media 0770 media_rw media_rw
+    mkdir /data/misc/gatord 0700 root root
 
-on property:sys.boot_completed=1
-    write /sys/class/hw_power/charger/direct_charger/iin_thermal 4500
-    write /sys/class/hw_power/charger/charge_data/iin_thermal 2000
+    restorecon_recursive /data/local/tmp/lava
 
-on property:ro.lineage.device=*
-    setprop qemu.hw.mainkeys 1
+on property:usb_speed.switch=high
+    write /sys/kernel/debug/f72c0000.usb/config "0"
 
-on property:sys.usb.ffs.mtp.ready=0
-    setprop sys.usb.ffs.mtp.ready 1
+on property:usb_speed.switch=full
+    write /sys/kernel/debug/f72c0000.usb/config "1"
 
-service dpeservice-1.0 /system/bin/displayengineserver@1.0
+on property:sys.user.0.ce_available=true
+    mkdir /data/sec_storage_data 0700 system system
+    mkdir /data/sec_storage_data_users 0700 system system
+
+on property:sys.user.0.de_available=true
+    mkdir /data/sec_storage_data 0700 system system
+    mkdir /data/sec_storage_data_users 0700 system system 
+
+service watchdogd /system/bin/watchdogd 10 20
+    class core
+    oneshot
+    seclabel u:r:watchdogd:s0
+
+service bugreport /system/bin/dumpstate -d -p -B -z \
+    -o /data/user_de/0/com.android.shell/files/bugreports/bugreport
     class main
-    user graphics
-    group graphics system sdcard_rw
     disabled
-
-service dpeservice-1.1 /system/bin/displayengineserver@1.1
-    class main
-    user graphics
-    group graphics system sdcard_rw
-    disabled
-
-service wifi_ext /system/bin/hw/android.hardware.wifi@1.0-service
-    class hal
-    capabilities NET_ADMIN NET_RAW SYS_MODULE
-    user wifi
-    group wifi gps dhcp inet net_raw net_admin
+    oneshot
