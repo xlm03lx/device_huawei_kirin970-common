@@ -39,8 +39,8 @@ BOARD_AVB_ENABLE := false
 
 
 # LineageOS Hardware
-#BOARD_HARDWARE_CLASS += \
-#    $(DEVICE_PATH)/lineagehw
+BOARD_HARDWARE_CLASS += \
+    $(DEVICE_PATH)/lineagehw
 
 # Lineage hardware
 JAVA_SOURCE_OVERLAYS := \
