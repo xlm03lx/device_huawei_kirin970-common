@@ -20,3 +20,6 @@ debug.sf.disable_hwcomposer=true
 
 # Force disable blank
 debug.force_no_blanking=true
+
+# Camera
+persist.sys.camera.huawei=true
