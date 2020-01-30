@@ -23,3 +23,27 @@ debug.force_no_blanking=true
 
 # Camera
 persist.sys.camera.huawei=true
+
+# Gpu
+debug.egl.hw=1
+debug.egl.profiler=1
+debug.hwui.use_buffer_age=false
+debug.performance.tuning=1
+debug.sf.hw=1
+hwui.disable_vsync=true
+ro.config.enable.hw_accel=true
+video.accelerate.hw=1
+
+# Statsd
+ro.statsd.enable=false
+
+# Sdcard
+ro.statsd.enable=false
+ro.sys.sdcardfs=1
+persist.sys.adoptable_fbe=true
+
+#quick boot
+ro.config.hw_quickpoweron=true
+
+#launcher keep memory
+ro.HOME_APP_ADJ=1
