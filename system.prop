@@ -19,7 +19,7 @@ ro.telephony.ril.hisi=true
 ro.statsd.enable=false
 
 # Disable HW Overlays
-#debug.sf.disable_hwcomposer=true
+debug.sf.disable_hwcomposer=true
 
 # Force disable blank
 debug.force_no_blanking=true
