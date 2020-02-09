@@ -52,7 +52,7 @@ PRODUCT_PACKAGES += \
 # Input
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/fingerprint.kl:system/usr/keylayout/fingerprint.kl
-	
+
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
@@ -108,6 +108,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libshims_hisupl \
     libshims_hwsmartdisplay_jni
+
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)
 
 # USB
 PRODUCT_PACKAGES += \
