@@ -1,4 +1,5 @@
 import /system/etc/init/connectivity/init.${ro.connectivity.chiptype}.rc
+import /vendor/etc/init/${ro.bootmode}/init.${ro.bootmode}.rc
 
 on init
     mount none /system/bin/adbd /sbin/adbd bind
@@ -41,3 +42,11 @@ service wifi_ext /system/bin/hw/android.hardware.wifi@1.0-service
     capabilities NET_ADMIN NET_RAW SYS_MODULE
     user wifi
     group wifi gps dhcp inet net_raw net_admin
+
+
+service charger /sbin/chargeonlymode -p
+    class charger
+    user root
+    group root system
+    critical
+    seclabel u:r:charger:s0
