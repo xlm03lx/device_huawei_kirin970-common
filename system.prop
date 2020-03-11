@@ -62,7 +62,7 @@ ro.skip.fingerprint.check=true
 persist.sys.camera.huawei=true
 
 # Security Patches
-ro.build.version.security_patch_sys=2019-09-05
+ro.build.version.security_patch_sys=2020-01-05
 
 # MediaCodec
 persist.sys.google_avc_enc=0 
