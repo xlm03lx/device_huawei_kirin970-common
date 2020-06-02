@@ -14,28 +14,26 @@
 # limitations under the License.
 #
 
-include build/make/target/board/generic_arm64_a/BoardConfig.mk
-
 VENDOR_PATH := device/huawei/kirin970-common
 
-# Platform
+# Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := generic
+TARGET_CPU_VARIANT := cortex-a53
 
 TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv7-a-neon
+TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a15
+TARGET_2ND_CPU_VARIANT := cortex-a53
 
-# Kernel
-#BOARD_KERNEL_IMAGE_NAME := Image
-#TARGET_NO_KERNEL := false
-#TARGET_PREBUILT_KERNEL := /dev/null
-#BOARD_AVB_ENABLE := false
+TARGET_USES_64_BIT_BINDER := true
+
+# Bootloader
+TARGET_NO_BOOTLOADER := true
+
 # Kernel
 BOARD_KERNEL_BASE := 0x00078000
 BOARD_KERNEL_CMDLINE := loglevel=4 initcall_debug=n page_tracker=on unmovable_isolate1=2:192M,3:224M,4:256M printktimer=0xfff0a000,0x534,0x538
@@ -48,53 +46,60 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/huawei/kirin970
 TARGET_KERNEL_CONFIG := merge_kirin970_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
-TARGET_KERNEL_CLANG_COMPILE := true
 
+# Properties
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
-# LineageOS Hardware
-#BOARD_HARDWARE_CLASS += \
-#    $(DEVICE_PATH)/lineagehw
+# Treble
+BOARD_VNDK_VERSION := current
 
-# Lineage hardware
-JAVA_SOURCE_OVERLAYS := \
-    org.lineageos.hardware|$(VENDOR_PATH)/lineagehw|**/*.java
+# Audio
+USE_XML_AUDIO_POLICY_CONF := 1
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(VENDOR_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 
-# Camera
-TARGET_CAMERA_NEEDS_ADD_STATES_IN_ENUMERATE := true
-
-# Extended Filesystem Support
-#TARGET_EXFAT_DRIVER := exfat
-
-# System themes
-TARGET_RRO_OUT_SYSTEM := true
+# Board
+TARGET_BOARD_INFO_FILE := $(VENDOR_PATH)/board-info.txt
 
 # Display
-TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x2080000U
+TARGET_USES_HWC2 := true
+
+# Lineage hardware
+JAVA_SOURCE_OVERLAYS := \
+    org.lineageos.hardware|$(VENDOR_PATH)/lineagehw|**/*.java
 
 # Partitions
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 25165824
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3707764736
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_CACHEIMAGE_PARTITION_SIZE := 16777216
-
-# Properties
-TARGET_SYSTEM_PROP := $(VENDOR_PATH)/system.prop
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3707764736
+TARGET_COPY_OUT_VENDOR := vendor
 
 # Radio
-#TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
+TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 
 # Recovery
-#BOARD_PROVIDES_BOOTLOADER_MESSAGE := true
 TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/rootdir/etc/fstab.kirin970
-
-# EMUI8 ecurity patch level
-VENDOR_SECURITY_PATCH := 2019-08-01
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
+TARGET_USES_MKE2FS := true
 
 # Release tools
+TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_huawei
 TARGET_RELEASETOOLS_EXTENSIONS := $(VENDOR_PATH)/releasetools
+
+# Root
+BOARD_ROOT_EXTRA_FOLDERS := \
+    cust \
+    hw_odm \
+    modem_log \
+    preload \
+    sec_storage \
+    splash2 \
+    version
 
 # SELinux
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(VENDOR_PATH)/sepolicy/private
@@ -102,13 +107,5 @@ BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(VENDOR_PATH)/sepolicy/public
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
-    /system/lib64/libdisplayenginesvc_1_0.so|libshims_hwsmartdisplay_jni.so \
-    /system/lib64/libdisplayenginesvc_1_1.so|libshims_hwsmartdisplay_jni.so \
-    /system/lib64/libhwsmartdisplay_jni.so|libshims_hwsmartdisplay_jni.so \
-    /vendor/bin/hw/vendor.huawei.hardware.hisupl@1.0-service|libshims_hisupl.so
-
-# LLVN
-TARGET_USE_SDCLANG := true
-
-# vintf
-DEVICE_FRAMEWORK_MANIFEST_FILE := $(VENDOR_PATH)/framework_manifest.xml
+    /system/lib64/libdisplayengineservice.so|libshims_hwsmartdisplay_jni.so \
+    /system/lib64/libhwsmartdisplay_jni.so|libshims_hwsmartdisplay_jni.so
