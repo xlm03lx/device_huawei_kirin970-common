@@ -20,3 +20,6 @@ allow init sysfs_power:lnk_file read;
 allow init splash2_data_file:dir mounton;
 allow init tmpfs:lnk_file create;
 allow vendor_init device:chr_file getattr;
+
+# Allow init to load kernel modules
+allow init kernel:system module_request;
