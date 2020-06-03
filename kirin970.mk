@@ -52,7 +52,7 @@ PRODUCT_PACKAGES += \
 # Input
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/fingerprint.kl:system/usr/keylayout/fingerprint.kl
-	
+
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
@@ -101,8 +101,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/releasetools/releasetools.kirin970.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/releasetools.kirin970.sh
 
 # Selinux
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/sepolicy/27.0.cil:$(TARGET_COPY_OUT_SYSTEM)/etc/selinux/mapping/27.0.cil
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/sepolicy/27.0.cil:$(TARGET_COPY_OUT_SYSTEM)/etc/selinux/mapping/27.0.cil
 
 # Shims
 PRODUCT_PACKAGES += \
@@ -118,7 +118,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/vndk-compat/ld.config.26.txt:system/etc/ld.config.26.txt \
     $(LOCAL_PATH)/vndk-compat/llndk.libraries.26.txt:system/etc/llndk.libraries.26.txt \
     $(LOCAL_PATH)/vndk-compat/vndksp.libraries.26.txt:system/etc/vndksp.libraries.26.txt \
-    $(LOCAL_PATH)/vndk-compat/ld.config.27.txt:system/etc/ld.config.27.txt
+#    $(LOCAL_PATH)/vndk-compat/ld.config.27.txt:system/etc/ld.config.27.txt
 
 # Wi-Fi
 PRODUCT_PACKAGES += \
