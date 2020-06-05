@@ -94,7 +94,7 @@ TARGET_LD_SHIM_LIBS := \
     /vendor/bin/hw/vendor.huawei.hardware.hisupl@1.0-service|libshims_hisupl.so
 
 # LLVN
-TARGET_USE_SDCLANG := true
+#TARGET_USE_SDCLANG := true
 
 # vintf
 DEVICE_FRAMEWORK_MANIFEST_FILE := $(VENDOR_PATH)/framework_manifest.xml
