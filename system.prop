@@ -103,3 +103,5 @@ debug.composition.type=gpu
 #Enable nightmode overlay by default
 persist.sys.overlay.nightmode=true
 
+#hide nav bar
+qemu.hw.mainkeys=1
