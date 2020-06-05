@@ -89,8 +89,13 @@ PRODUCT_BOOT_JARS += \
     telephony-ext
 
 # Offline charging
+#PRODUCT_PACKAGES += \
+#    charger_res_images
+# Fix Offline Charging on Huawmeme
 PRODUCT_PACKAGES += \
-    charger_res_images
+	huawei-charger
+PRODUCT_COPY_FILES += \
+	$(call find-copy-subdir-files,*,device/phh/treble/huawei_charger/files,system/etc/charger)
 
 # Recovery
 PRODUCT_PACKAGES += \
