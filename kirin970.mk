@@ -95,7 +95,7 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_PACKAGES += \
 	huawei-charger
 PRODUCT_COPY_FILES += \
-	$(call find-copy-subdir-files,*,device/phh/treble/huawei_charger/files,system/etc/charger)
+	$(call find-copy-subdir-files,*,device/huawei/kirin970-common/huawei_charger/files,system/etc/charger)
 
 # Recovery
 PRODUCT_PACKAGES += \
