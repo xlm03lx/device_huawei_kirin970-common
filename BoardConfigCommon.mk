@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-include build/make/target/board/generic_arm64_a/BoardConfig.mk
+#include build/make/target/board/generic_arm64_ab/BoardConfig.mk
 
 VENDOR_PATH := device/huawei/kirin970-common
 
@@ -80,7 +80,7 @@ TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/rootdir/etc/fstab.kirin970
 VENDOR_SECURITY_PATCH := 2019-08-01
 
 # Release tools
-TARGET_RELEASETOOLS_EXTENSIONS := $(VENDOR_PATH)/releasetools
+#TARGET_RELEASETOOLS_EXTENSIONS := $(VENDOR_PATH)/releasetools
 
 # SELinux
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(VENDOR_PATH)/sepolicy/private
