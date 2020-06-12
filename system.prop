@@ -12,6 +12,9 @@ ro.adb.secure=1
 # Perf
 ro.vendor.qti.sys.fw.bg_apps_limit=42
 
+# Signal strength
+ro.telephony.ril.huawei_signalstrength=true
+
 # RIL
 ro.telephony.ril.hisi=true
 
