@@ -1,2 +1,0 @@
-attribute sysfs_backlight_attr;
-attribute sysfs_led_attr;
